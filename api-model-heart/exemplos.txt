@@ -1,0 +1,29 @@
+🔴 ALTO RISCO CARDÍACO
+
+#	Idade	Sexo	ChestPainType	RestingBP	Cholesterol	FastingBS	RestingECG	MaxHR	Exang	Oldpeak	ST_Slope	Thal
+1	65	    M	    ASY	            150	        280	        1	        LVH	        85	    Sim	    2.8	    Flat	    Fixed defect
+2	59	    F	    TA	            145	        240	        1	        ST	        90	    Sim	    3.0	    Down	    Reversible defect
+3	70	    M	    ASY	            160	        260	        1	        LVH	        88	    Sim	    2.5	    Flat	    Fixed defect
+4	56	    M	    ASY	            140	        210	        1	        Normal	    95	    Sim	    1.8	    Flat	    Normal
+5	62	    M	    ASY	            130	        230	        0	        LVH	        100	    Sim	    2.2	    Down	    Reversible defect
+6	68	    F	    NAP	            155	        270	        1	        ST	        80	    Sim	    2.9	    Flat	    Fixed defect
+7	61	    M	    TA	            170	        250	        1	        Normal	    102	    Sim	    2.3	    Down	    Reversible defect
+8	64	    M	    ASY	            145	        220	        1	        LVH	        85	    Sim	    2.5	    Flat	    Normal
+9	58	    M	    ASY	            150	        245	        1	        Normal	    98	    Sim	    1.9	    Flat	    Fixed defect
+10	69	    F	    ASY	            160	        260	        1	        LVH	        92	    Sim	    3.2	    Down	    Reversible defect
+
+
+
+🟢 BAIXO RISCO CARDÍACO
+
+#	Idade	Sexo	ChestPainType	RestingBP	Cholesterol	FastingBS	RestingECG	MaxHR	Exang	Oldpeak	ST_Slope	Thal
+1	42	    M	    ATA	            120	        190	        0	        Normal	    175	    Não	    0.0 	Up	        Normal
+2	35	    F	    NAP	            110	        160	        0	        Normal	    180	    Não	    0.1	    Up	        Normal
+3	50	    M	    NAP	            125	        190	        0	        Normal	    165	    Não	    0.2	    Up	        Normal
+4	45	    F	    ATA	            118	        170	        0	        Normal	    172	    Não	    0.0	    Up	        Normal
+5	39	    M	    ATA	            115	        180	        0	        Normal	    185	    Não	    0.0	    Up	        Normal
+6	47	    F	    NAP	            122	        200	        0	        Normal	    160	    Não	    0.3	    Up	        Normal
+7	33	    M	    ATA	            118	        175	        0	        Normal	    190	    Não	    0.0	    Up	        Normal
+8	52	    F	    NAP	            120	        185	        0	        Normal	    170	    Não	    0.1	    Up	        Normal
+9	40	    M	    ATA	            110	        160	        0	        Normal	    185	    Não	    0.0	    Up	        Normal
+10	48	    F	    NAP	            125	        195	        0	        Normal	    168	    Não	    0.2	    Up	        Normal

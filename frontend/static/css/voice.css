@@ -1,0 +1,7 @@
+
+.voz__grupo { display: flex; align-items: center; gap: .5rem; margin: 0 .5rem; }
+.btn-mic { border: 1px solid #ddd; background: #fff; border-radius: 999px; width: 44px; height: 44px; cursor: pointer; display: grid; place-items: center; }
+.btn-mic.is-recording { background: #ffeaea; border-color: #f66; box-shadow: 0 0 0 3px rgba(255,0,0,.15) inset; }
+.mic-icon { font-size: 1.15rem; line-height: 1; }
+.voz-status { min-width: 120px; font-size: .85rem; color: #666; }
+.voz__aviso { margin-top: .5rem; color: #777; }

@@ -1,0 +1,63 @@
+{% raw %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duosystem Saúde</title>
+    <link
+      rel="stylesheet"
+      href="{% endraw %}{{ url_for('static', filename='css/index.css') }}{% raw %}"
+    />
+  </head>
+  <body>
+    <header class="cabecalho container">
+      <img
+        src="{% endraw %}{{ url_for('static', filename='img/logo-chatbot.svg') }}{% raw %}"
+        alt="Logo Chatbot"
+      />
+      <img
+        src="{% endraw %}{{ url_for('static', filename='img/fiapalura.svg') }}{% raw %}"
+        alt="Logo Chatbot"
+        class="logo-fiap"
+      />
+
+      <div class="cabecalho__acoes"></div>
+    </header>
+    <main class="main">
+      <section class="chat container" id="chat">
+        <p class="chat__bolha chat__bolha--bot">
+          👋 Olá! Seja bem-vindo(a) à avaliação de risco cardiovascular.<br /><br />
+          Este assistente ajudará você a estimar, de forma simples e segura, o
+          seu risco de doenças cardíacas com base em alguns dados clínicos.<br /><br />
+          Podemos começar agora?<br />
+          👉 Responda “sim” para iniciar ou “não” para sair.
+        </p>
+      </section>
+      <section class="entrada container">
+        <div class="entrada__container">
+          <button id="mais_arquivo" aria-label="Botão de mais opções">
+            <i class="icone icone--mais-opcoes"></i>
+          </button>
+          <input
+            type="text"
+            class="entrada__input"
+            placeholder="Enviar uma mensagem"
+            id="input"
+          />
+          <input type="hidden" id="type_conversation" value="await_service" />
+          <button aria-label="Botão de enviar" id="botao-enviar">
+            <img class="icone icone--enviar-mensagem" />
+          </button>
+        </div>
+      </section>
+    </main>
+    {% endraw %}
+    <script src="{{ url_for('static', filename='js/voice.js') }}"></script>
+    {% raw %}
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% endraw %}{{ url_for('static', filename='js/index.js') }}{% raw %}"></script>
+</html>
+
+{% endraw %}

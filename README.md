@@ -18,8 +18,10 @@ Este repositório contém o **algoritmo de criação e teste do modelo** utiliza
 ```
 
 ---
+
 # Desativar o ambiente virtual, se estiver ativo
-```bash
+
+````bash
 deactivate
 
 # Remover toda a pasta do ambiente virtual
@@ -35,7 +37,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-```
+````
 
 > Se preferir versões mínimas (não fixas), você pode usar um requirements com **constraints `>=`** (ver seção “Alternativa com versões mínimas”).
 
@@ -45,13 +47,13 @@ pip install -r requirements.txt
 
 O script `main.py` executa as seguintes etapas principais:
 
-1. **Carregamento do dataset** `heart.csv` e checagem de nulos.  
-2. **Codificação One‑Hot** das variáveis categóricas com `pd.get_dummies(drop_first=True)`.  
-3. **Split treino/teste** estratificado (70/30) com `train_test_split`.  
-4. **Escalonamento** das features com `StandardScaler` (fit no treino, transform em treino e teste).  
-5. **Persistência** dos conjuntos escalonados (`X_train.csv`, `X_test.csv`, `y_train.csv`, `y_test.csv`).  
-6. **Treinamento** de uma **Regressão Logística** (`solver='liblinear'`, `random_state=42`).  
-7. **Avaliação** com acurácia e `classification_report` (precision, recall, f1).  
+1. **Carregamento do dataset** `heart.csv` e checagem de nulos.
+2. **Codificação One‑Hot** das variáveis categóricas com `pd.get_dummies(drop_first=True)`.
+3. **Split treino/teste** estratificado (70/30) com `train_test_split`.
+4. **Escalonamento** das features com `StandardScaler` (fit no treino, transform em treino e teste).
+5. **Persistência** dos conjuntos escalonados (`X_train.csv`, `X_test.csv`, `y_train.csv`, `y_test.csv`).
+6. **Treinamento** de uma **Regressão Logística** (`solver='liblinear'`, `random_state=42`).
+7. **Avaliação** com acurácia e `classification_report` (precision, recall, f1).
 8. **Exportação** dos artefatos: `modelo_insuficiencia_cardiaca.pkl` e `scaler_dados.pkl` (via `joblib`).
 
 > O **alvo** (variável dependente) é a coluna `HeartDisease` (0/1).  
@@ -69,17 +71,18 @@ Após a execução, você deverá ver no console as métricas do modelo e os arq
 
 ## 🔬 Métricas e Relatórios
 
-O script imprime no console:  
-- **Acurácia** no conjunto de teste;  
-- **Classification Report**: *precision*, *recall*, *f1‑score* por classe;  
-- *Observação*: ajuste de limiar pode ser considerado conforme a necessidade (ex.: priorizar recall).
+O script imprime no console:
+
+- **Acurácia** no conjunto de teste;
+- **Classification Report**: _precision_, _recall_, _f1‑score_ por classe;
+- _Observação_: ajuste de limiar pode ser considerado conforme a necessidade (ex.: priorizar recall).
 
 ---
 
 ## 🔁 Reprodutibilidade
 
-- `random_state=42` no split e no modelo;  
-- `StandardScaler` treinado apenas no treino (evita *data leakage*);  
+- `random_state=42` no split e no modelo;
+- `StandardScaler` treinado apenas no treino (evita _data leakage_);
 - As colunas finais usadas pelo modelo ficam registradas na propriedade `model.feature_names_in_` (útil para alinhar produção).
 
 ---
@@ -88,8 +91,8 @@ O script imprime no console:
 
 Na etapa de inferência (API), é **obrigatório alinhar** o vetor de entrada às **mesmas colunas** do treino:
 
-- Usar `model.feature_names_in_` para reordenar/“completar” dummies;  
-- Aplicar **o mesmo `scaler_dados.pkl`** (fit no treino) ao vetor antes de `predict`/`predict_proba`;  
+- Usar `model.feature_names_in_` para reordenar/“completar” dummies;
+- Aplicar **o mesmo `scaler_dados.pkl`** (fit no treino) ao vetor antes de `predict`/`predict_proba`;
 - Em caso de divergência de colunas, usar `X_train.csv` como **fonte da verdade** para o conjunto de features.
 
 ---
@@ -128,6 +131,7 @@ print("Classe:", pred, "Prob.:", f"{prob:.2%}")
 ---
 
 ## 🪪 Licença
+
 Uso acadêmico e educacional. Ajuste conforme sua necessidade.
 
 ---

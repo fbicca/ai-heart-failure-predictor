@@ -20,18 +20,6 @@ def _fmt_slope(v):
     mapa = {"Up": "Up (ascendente)", "Flat": "Flat (plano)", "Down": "Down (descendente)"}
     return mapa.get(v, _fmt_or(v))
 
-def _fmt_thal(v):
-    """Formata o valor do exame de tálio (Thal) para exibição."""
-    if not v:
-        return "—"
-    val = str(v).strip().lower()
-    if val in {"normal"}:
-        return "Normal (fluxo sanguíneo normal)"
-    if val in {"fixed defect", "fixed", "defeito fixo"}:
-        return "Fixed defect (defeito fixo — possível necrose ou infarto antigo)"
-    if val in {"reversible defect", "reversible", "defeito reversivel", "defeito reversível"}:
-        return "Reversible defect (defeito reversível — possível isquemia)"
-    return _fmt_or(v)
 
 def montar_resumo(session):
     linhas = [
@@ -47,7 +35,6 @@ def montar_resumo(session):
         f"💢 Angina durante exercício (Exang): {_fmt_bool01(session.get('exang'))}",
         f"📉 Oldpeak (mV): {_fmt_or(session.get('oldpeak'))}",
         f"📈 Inclinação do ST (ST_Slope): {_fmt_slope(session.get('st_slope'))}",
-        f"🧪 Exame de tálio (Thal): {_fmt_thal(session.get('thal'))}",
         "",
         "🔎 Confere?\n\n",
         "👉 Responda SIM para confirmar e enviar à API, ou NÃO para reiniciar o preenchimento.",

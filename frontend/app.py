@@ -52,8 +52,7 @@ def _build_api_payload(session):
         # Exang pode ser 1/0 -> API aceita Exang ou ExerciseAngina ('Y'/'N'); enviaremos Exang
         "Exang": 1 if db_memory["exang"] in (1, "1", True, "sim") else 0,
         "Oldpeak": to_float(db_memory["oldpeak"]),
-        "ST_Slope": db_memory["st_slope"],
-        "Thal": db_memory["thal"] or None
+        "ST_Slope": db_memory["st_slope"]
     }
     return payload
 
@@ -360,36 +359,18 @@ def chat():
             }
 
     # ST_Slope: a inclinação do segmento ST de pico do exercício [Up: inclinação ascendente, Flat: plano, Down: inclinação descendente]
+    # Finaliza a coleta de heart_disease:
     if type_conversation == "await_slope":
         ok, resultado = valida_slope(low)
 
         if ok:
             db_memory["st_slope"] = resultado
-            return {
-                "msg": f"Perfeito! 📈\n Inclinação do segmento ST registrada como {db_memory['st_slope']}.\n\n"
-                    "Agora, por favor, informe o resultado do exame de tálio (Thal):\n"
-                    "🟢 Normal\n"
-                    "🟠 Fixed defect (defeito fixo)\n"
-                    "🔵 Reversible defect (defeito reversível)",
-                "type_conversation": "await_thal"
-            }
+            return montar_resumo(db_memory)
         else:
             return { 
                 "msg": f"{resultado}",
                 "type_conversation": "await_slope"
             }
-
-    # finaliza a coleta de heart_disease:
-    if type_conversation == "await_thal":
-        ok, resultado = valida_thal(low)
-        if ok:
-            db_memory["thal"] = resultado
-            return montar_resumo(db_memory)
-        else:
-            return { 
-                "msg": f"{resultado}",
-                "type_conversation": "await_thal"
-            }  
 
     # Confirmação final: 'sim' envia para a API; 'não' reinicia
     if type_conversation == "confirm_summary":
